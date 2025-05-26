@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="IMS_KMPORTALModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="IMS_EmployeeDetailList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="IMS_EmployeeDetailListByGlobalID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="globalid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="IMS_EmployeeFullDetailByGlobalID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="globalid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="IMS_GetHODReportees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="hodglobalid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="IMS_GetHODS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ra_validateemployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="globalid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="spChkUserAD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USER_NAME" Type="varchar" Mode="In" />
+          <Parameter Name="PASSWORD" Type="varchar" Mode="In" />
+          <Parameter Name="authenticationmode" Type="varchar" Mode="In" />
+          <Parameter Name="samAccountName" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="IMS_KMPORTALModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IMS_KMPORTALModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="IMS_KMPORTALEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="IMS_EmployeeDetailList" ReturnType="Collection(IMS_KMPORTALModel.IMS_EmployeeDetailList_Result)" />
+          <FunctionImport Name="IMS_EmployeeDetailListByGlobalID" ReturnType="Collection(IMS_KMPORTALModel.IMS_EmployeeDetailListByGlobalID_Result)">
+          <Parameter Name="globalid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="IMS_EmployeeFullDetailByGlobalID" ReturnType="Collection(IMS_KMPORTALModel.IMS_EmployeeFullDetailByGlobalID_Result)">
+          <Parameter Name="globalid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="IMS_GetHODReportees" ReturnType="Collection(IMS_KMPORTALModel.IMS_GetHODReportees_Result)">
+          <Parameter Name="hodglobalid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="IMS_GetHODS" ReturnType="Collection(IMS_KMPORTALModel.IMS_GetHODS_Result)" />
+          <FunctionImport Name="spChkUserAD" ReturnType="Collection(IMS_KMPORTALModel.spChkUserAD_Result)">
+            <Parameter Name="USER_NAME" Mode="In" Type="String" />
+            <Parameter Name="PASSWORD" Mode="In" Type="String" />
+            <Parameter Name="authenticationmode" Mode="In" Type="String" />
+            <Parameter Name="samAccountName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="ra_validateemployee" ReturnType="Collection(IMS_KMPORTALModel.ra_validateemployee_Result)">
+            <Parameter Name="globalid" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="IMS_EmployeeDetailList_Result">
+          <Property Type="String" Name="Value" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Text" Nullable="true" MaxLength="151" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="USER_ID" Nullable="false" />
+          <Property Type="String" Name="ADUserId" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="managerid" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="hodid" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="locationid" Nullable="false" />
+          <Property Type="Int32" Name="Functions" Nullable="true" />
+          <Property Type="String" Name="Functionname" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="DEPT" Nullable="false" />
+          <Property Type="String" Name="deptname" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="IMS_EmployeeDetailListByGlobalID_Result">
+          <Property Type="String" Name="Value" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Text" Nullable="true" MaxLength="151" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="USER_ID" Nullable="false" />
+          <Property Type="String" Name="ADUserId" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="managerid" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="hodid" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="locationid" Nullable="false" />
+          <Property Type="Int32" Name="Functions" Nullable="true" />
+          <Property Type="String" Name="Functionname" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="DEPT" Nullable="false" />
+          <Property Type="String" Name="deptname" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="IMS_EmployeeFullDetailByGlobalID_Result">
+          <Property Type="String" Name="GlobalId" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="USER_NAME" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="FREEZED" Nullable="false" />
+          <Property Type="DateTime" Name="DOB" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="EFFECTIVE_FROM" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="location_id" Nullable="false" />
+          <Property Type="String" Name="Locationname" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="DEPT" Nullable="false" />
+          <Property Type="String" Name="deptname" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Functions" Nullable="true" />
+          <Property Type="String" Name="Functionname" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ROLES" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Did" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Gid" Nullable="true" />
+          <Property Type="String" Name="Band" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Designation" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ADUserId" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="RecommendedID" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="FunctionalGID" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="chroid" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Title" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="PositionType" Nullable="true" />
+          <Property Type="String" Name="recommendname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="recommendmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="functionalheadname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="functionalmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="chroname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="chromail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WhatsAppNumber" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="USER_ID" Nullable="false" />
+          <Property Type="Int32" Name="JobClassification" Nullable="true" />
+          <Property Type="Int32" Name="JobLevel" Nullable="true" />
+          <Property Type="Int32" Name="JobRole" Nullable="true" />
+          <Property Type="Int32" Name="PhysicalLocation" Nullable="true" />
+          <Property Type="Int32" Name="JobClassificationID" Nullable="true" />
+          <Property Type="Int32" Name="LID" Nullable="true" />
+          <Property Type="String" Name="JobClassificationName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="JobLevelName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="jobrolename" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="BASECAMPPhLocID" Nullable="true" />
+          <Property Type="String" Name="BASECAMPPhysicalLocation" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="AttendanceStatus" Nullable="true" />
+          <Property Type="String" Name="Locations" Nullable="false" MaxLength="200" />
+          <Property Type="Binary" Name="ImageContent" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="PanCardNo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="SeparationTypeCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ExitTypeCode" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="DateofResignation" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ResignationJobInformationdeletiondate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="LastWorkingDay" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="DateofSeparation" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="SeparationInitiationDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="ReasonforResignationonexitID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="OKtorehire" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KeyTalent" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="RetirementDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="FIRST_NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LAST_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Gender" Nullable="true" />
+          <Property Type="String" Name="ApprovalID" Nullable="true" MaxLength="8" />
+        </ComplexType>
+        <ComplexType Name="IMS_GetHODReportees_Result">
+          <Property Type="String" Name="Value" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Text" Nullable="true" MaxLength="151" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="USER_ID" Nullable="false" />
+          <Property Type="String" Name="ADUserId" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="managerid" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="hodid" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="locationid" Nullable="false" />
+          <Property Type="Int32" Name="Functions" Nullable="true" />
+          <Property Type="String" Name="Functionname" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="DEPT" Nullable="false" />
+          <Property Type="String" Name="deptname" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="IMS_GetHODS_Result">
+          <Property Type="String" Name="Value" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Text" Nullable="true" MaxLength="151" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="USER_ID" Nullable="false" />
+          <Property Type="String" Name="ADUserId" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="managerid" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="hodid" Nullable="true" MaxLength="15" />
+          <Property Type="Int32" Name="locationid" Nullable="false" />
+          <Property Type="Int32" Name="Functions" Nullable="true" />
+          <Property Type="String" Name="Functionname" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="DEPT" Nullable="false" />
+          <Property Type="String" Name="deptname" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="spChkUserAD_Result">
+          <Property Type="Int32" Name="USER_ID" Nullable="false" />
+          <Property Type="String" Name="USER_NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="aduserid" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FIRST_NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LAST_NAME" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DEPARTMENT" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="LOCATION_TEXT" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="LOCATION" Nullable="false" />
+          <Property Type="Int32" Name="CODE" Nullable="false" />
+          <Property Type="Int32" Name="DEPT" Nullable="false" />
+          <Property Type="Int32" Name="LEVEL" Nullable="true" />
+          <Property Type="String" Name="Desig_value" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Designation" Nullable="true" />
+          <Property Type="String" Name="Reporting_Authority" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="GLOBALID" Nullable="true" MaxLength="20" />
+          <Property Type="Int32" Name="AdvRoleId" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="DeptNo" Nullable="false" />
+          <Property Type="Int32" Name="PositionType" Nullable="true" />
+          <Property Type="Int32" Name="Functions" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ra_validateemployee_Result">
+          <Property Type="String" Name="GlobalId" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="USER_NAME" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="USER_ID" Nullable="false" />
+          <Property Type="Int32" Name="dept" Nullable="false" />
+          <Property Type="String" Name="deptname" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Functions" Nullable="true" />
+          <Property Type="String" Name="Functionname" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="RecommendedID" Nullable="true" MaxLength="8" />
+          <Property Type="String" Name="recommendmail" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="recommendname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FunctionalGID" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="functionalheadname" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="functionalmail" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Gender" Nullable="true" />
+          <Property Type="String" Name="WhatsAppNumber" Nullable="true" MaxLength="15" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IMS_KMPORTALModelStoreContainer" CdmEntityContainer="IMS_KMPORTALEntities" >
+          <FunctionImportMapping FunctionImportName="IMS_EmployeeDetailList" FunctionName="IMS_KMPORTALModel.Store.IMS_EmployeeDetailList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMS_KMPORTALModel.IMS_EmployeeDetailList_Result">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="ADUserId" ColumnName="ADUserId" />
+                <ScalarProperty Name="managerid" ColumnName="managerid" />
+                <ScalarProperty Name="hodid" ColumnName="hodid" />
+                <ScalarProperty Name="locationid" ColumnName="locationid" />
+                <ScalarProperty Name="Functions" ColumnName="Functions" />
+                <ScalarProperty Name="Functionname" ColumnName="Functionname" />
+                <ScalarProperty Name="DEPT" ColumnName="DEPT" />
+                <ScalarProperty Name="deptname" ColumnName="deptname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="IMS_EmployeeDetailListByGlobalID" FunctionName="IMS_KMPORTALModel.Store.IMS_EmployeeDetailListByGlobalID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMS_KMPORTALModel.IMS_EmployeeDetailListByGlobalID_Result">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="ADUserId" ColumnName="ADUserId" />
+                <ScalarProperty Name="managerid" ColumnName="managerid" />
+                <ScalarProperty Name="hodid" ColumnName="hodid" />
+                <ScalarProperty Name="locationid" ColumnName="locationid" />
+                <ScalarProperty Name="Functions" ColumnName="Functions" />
+                <ScalarProperty Name="Functionname" ColumnName="Functionname" />
+                <ScalarProperty Name="DEPT" ColumnName="DEPT" />
+                <ScalarProperty Name="deptname" ColumnName="deptname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="IMS_EmployeeFullDetailByGlobalID" FunctionName="IMS_KMPORTALModel.Store.IMS_EmployeeFullDetailByGlobalID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMS_KMPORTALModel.IMS_EmployeeFullDetailByGlobalID_Result">
+                <ScalarProperty Name="GlobalId" ColumnName="GlobalId" />
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="FREEZED" ColumnName="FREEZED" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="EFFECTIVE_FROM" ColumnName="EFFECTIVE_FROM" />
+                <ScalarProperty Name="location_id" ColumnName="location_id" />
+                <ScalarProperty Name="Locationname" ColumnName="Locationname" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="DEPT" ColumnName="DEPT" />
+                <ScalarProperty Name="deptname" ColumnName="deptname" />
+                <ScalarProperty Name="Functions" ColumnName="Functions" />
+                <ScalarProperty Name="Functionname" ColumnName="Functionname" />
+                <ScalarProperty Name="ROLES" ColumnName="ROLES" />
+                <ScalarProperty Name="Did" ColumnName="Did" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Gid" ColumnName="Gid" />
+                <ScalarProperty Name="Band" ColumnName="Band" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="ADUserId" ColumnName="ADUserId" />
+                <ScalarProperty Name="RecommendedID" ColumnName="RecommendedID" />
+                <ScalarProperty Name="FunctionalGID" ColumnName="FunctionalGID" />
+                <ScalarProperty Name="chroid" ColumnName="chroid" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="PositionType" ColumnName="PositionType" />
+                <ScalarProperty Name="recommendname" ColumnName="recommendname" />
+                <ScalarProperty Name="recommendmail" ColumnName="recommendmail" />
+                <ScalarProperty Name="functionalheadname" ColumnName="functionalheadname" />
+                <ScalarProperty Name="functionalmail" ColumnName="functionalmail" />
+                <ScalarProperty Name="chroname" ColumnName="chroname" />
+                <ScalarProperty Name="chromail" ColumnName="chromail" />
+                <ScalarProperty Name="WhatsAppNumber" ColumnName="WhatsAppNumber" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="JobClassification" ColumnName="JobClassification" />
+                <ScalarProperty Name="JobLevel" ColumnName="JobLevel" />
+                <ScalarProperty Name="JobRole" ColumnName="JobRole" />
+                <ScalarProperty Name="PhysicalLocation" ColumnName="PhysicalLocation" />
+                <ScalarProperty Name="JobClassificationID" ColumnName="JobClassificationID" />
+                <ScalarProperty Name="LID" ColumnName="LID" />
+                <ScalarProperty Name="JobClassificationName" ColumnName="JobClassificationName" />
+                <ScalarProperty Name="JobLevelName" ColumnName="JobLevelName" />
+                <ScalarProperty Name="jobrolename" ColumnName="jobrolename" />
+                <ScalarProperty Name="BASECAMPPhLocID" ColumnName="BASECAMPPhLocID" />
+                <ScalarProperty Name="BASECAMPPhysicalLocation" ColumnName="BASECAMPPhysicalLocation" />
+                <ScalarProperty Name="AttendanceStatus" ColumnName="AttendanceStatus" />
+                <ScalarProperty Name="Locations" ColumnName="Locations" />
+                <ScalarProperty Name="ImageContent" ColumnName="ImageContent" />
+                <ScalarProperty Name="PanCardNo" ColumnName="PanCardNo" />
+                <ScalarProperty Name="SeparationTypeCode" ColumnName="SeparationTypeCode" />
+                <ScalarProperty Name="ExitTypeCode" ColumnName="ExitTypeCode" />
+                <ScalarProperty Name="DateofResignation" ColumnName="DateofResignation" />
+                <ScalarProperty Name="ResignationJobInformationdeletiondate" ColumnName="ResignationJobInformationdeletiondate" />
+                <ScalarProperty Name="LastWorkingDay" ColumnName="LastWorkingDay" />
+                <ScalarProperty Name="DateofSeparation" ColumnName="DateofSeparation" />
+                <ScalarProperty Name="SeparationInitiationDate" ColumnName="SeparationInitiationDate" />
+                <ScalarProperty Name="ReasonforResignationonexitID" ColumnName="ReasonforResignationonexitID" />
+                <ScalarProperty Name="OKtorehire" ColumnName="OKtorehire" />
+                <ScalarProperty Name="KeyTalent" ColumnName="KeyTalent" />
+                <ScalarProperty Name="RetirementDate" ColumnName="RetirementDate" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="ApprovalID" ColumnName="ApprovalID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="IMS_GetHODReportees" FunctionName="IMS_KMPORTALModel.Store.IMS_GetHODReportees">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMS_KMPORTALModel.IMS_GetHODReportees_Result">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="ADUserId" ColumnName="ADUserId" />
+                <ScalarProperty Name="managerid" ColumnName="managerid" />
+                <ScalarProperty Name="hodid" ColumnName="hodid" />
+                <ScalarProperty Name="locationid" ColumnName="locationid" />
+                <ScalarProperty Name="Functions" ColumnName="Functions" />
+                <ScalarProperty Name="Functionname" ColumnName="Functionname" />
+                <ScalarProperty Name="DEPT" ColumnName="DEPT" />
+                <ScalarProperty Name="deptname" ColumnName="deptname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="IMS_GetHODS" FunctionName="IMS_KMPORTALModel.Store.IMS_GetHODS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMS_KMPORTALModel.IMS_GetHODS_Result">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="ADUserId" ColumnName="ADUserId" />
+                <ScalarProperty Name="managerid" ColumnName="managerid" />
+                <ScalarProperty Name="hodid" ColumnName="hodid" />
+                <ScalarProperty Name="locationid" ColumnName="locationid" />
+                <ScalarProperty Name="Functions" ColumnName="Functions" />
+                <ScalarProperty Name="Functionname" ColumnName="Functionname" />
+                <ScalarProperty Name="DEPT" ColumnName="DEPT" />
+                <ScalarProperty Name="deptname" ColumnName="deptname" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spChkUserAD" FunctionName="IMS_KMPORTALModel.Store.spChkUserAD">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMS_KMPORTALModel.spChkUserAD_Result">
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="aduserid" ColumnName="aduserid" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="DEPARTMENT" ColumnName="DEPARTMENT" />
+                <ScalarProperty Name="LOCATION_TEXT" ColumnName="LOCATION_TEXT" />
+                <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="DEPT" ColumnName="DEPT" />
+                <ScalarProperty Name="LEVEL" ColumnName="LEVEL" />
+                <ScalarProperty Name="Desig_value" ColumnName="Desig_value" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="Reporting_Authority" ColumnName="Reporting Authority" />
+                <ScalarProperty Name="GLOBALID" ColumnName="GLOBALID" />
+                <ScalarProperty Name="AdvRoleId" ColumnName="AdvRoleId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DeptNo" ColumnName="DeptNo" />
+                <ScalarProperty Name="PositionType" ColumnName="PositionType" />
+                <ScalarProperty Name="Functions" ColumnName="Functions" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ra_validateemployee" FunctionName="IMS_KMPORTALModel.Store.ra_validateemployee">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="IMS_KMPORTALModel.ra_validateemployee_Result">
+                <ScalarProperty Name="GlobalId" ColumnName="GlobalId" />
+                <ScalarProperty Name="USER_NAME" ColumnName="USER_NAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="dept" ColumnName="dept" />
+                <ScalarProperty Name="deptname" ColumnName="deptname" />
+                <ScalarProperty Name="Functions" ColumnName="Functions" />
+                <ScalarProperty Name="Functionname" ColumnName="Functionname" />
+                <ScalarProperty Name="RecommendedID" ColumnName="RecommendedID" />
+                <ScalarProperty Name="recommendmail" ColumnName="recommendmail" />
+                <ScalarProperty Name="recommendname" ColumnName="recommendname" />
+                <ScalarProperty Name="FunctionalGID" ColumnName="FunctionalGID" />
+                <ScalarProperty Name="functionalheadname" ColumnName="functionalheadname" />
+                <ScalarProperty Name="functionalmail" ColumnName="functionalmail" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="WhatsAppNumber" ColumnName="WhatsAppNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
